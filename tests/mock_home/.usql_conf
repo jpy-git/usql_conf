@@ -1,0 +1,11 @@
+[pg_test]
+connection_string = pg://mr_test:abc123@localhost/test_database?sslmode=disable
+
+[my_test]
+connection_string = my://mr_tests:abc123@127.0.0.1:3306/some_db
+
+[ms_test]
+connection_string = ms://mr_tests:abc123@host/dbname
+
+[error_test]
+connexion_string = ms://user:pass@host/dbname
