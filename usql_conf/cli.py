@@ -1,9 +1,10 @@
 """Main CLI code."""
 import argparse
 import configparser
-from pathlib import Path
 import sys
-from typing import Optional, Sequence
+from pathlib import Path
+from typing import Optional
+from typing import Sequence
 
 
 def print_connection_string(config_name: str) -> int:
@@ -23,7 +24,8 @@ def print_connection_string(config_name: str) -> int:
         local_config_parser.read(local_config_path)
         try:
             local_connection_string = local_config_parser.get(
-                config_name, "connection_string"
+                config_name,
+                "connection_string",
             )
         except configparser.NoSectionError:
             local_connection_string = ""
@@ -35,7 +37,8 @@ def print_connection_string(config_name: str) -> int:
         global_config_parser.read(global_config_path)
         try:
             global_connection_string = global_config_parser.get(
-                config_name, "connection_string"
+                config_name,
+                "connection_string",
             )
         except configparser.NoSectionError:
             global_connection_string = ""

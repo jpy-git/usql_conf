@@ -20,10 +20,12 @@ from usql_conf import cli
 def test_main(input, expected, capsys, mocker):
     """Main returns expected outputs when valid config name is supplied."""
     mocker.patch(
-        "usql_conf.cli.Path.home", return_value=Path(__file__).parent / "mock_home"
+        "usql_conf.cli.Path.home",
+        return_value=Path(__file__).parent / "mock_home",
     )
     mocker.patch(
-        "usql_conf.cli.Path.cwd", return_value=Path(__file__).parent / "mock_cwd"
+        "usql_conf.cli.Path.cwd",
+        return_value=Path(__file__).parent / "mock_cwd",
     )
 
     assert not cli.main(input)
@@ -38,10 +40,12 @@ def test_main(input, expected, capsys, mocker):
 def test_main_config_name_not_set(input, capsys, mocker):
     """Main returns error when no config name match is found."""
     mocker.patch(
-        "usql_conf.cli.Path.home", return_value=Path(__file__).parent / "mock_home"
+        "usql_conf.cli.Path.home",
+        return_value=Path(__file__).parent / "mock_home",
     )
     mocker.patch(
-        "usql_conf.cli.Path.cwd", return_value=Path(__file__).parent / "mock_cwd"
+        "usql_conf.cli.Path.cwd",
+        return_value=Path(__file__).parent / "mock_cwd",
     )
     assert cli.main(input)
 
@@ -62,7 +66,8 @@ def test_main_config_name_not_set(input, capsys, mocker):
 def test_main_home_exist_only(input, expected, capsys, mocker):
     """Connection string returned from `~/.usql_conf` if `./.usql_conf` not exists."""
     mocker.patch(
-        "usql_conf.cli.Path.home", return_value=Path(__file__).parent / "mock_home"
+        "usql_conf.cli.Path.home",
+        return_value=Path(__file__).parent / "mock_home",
     )
     mocker.patch("usql_conf.cli.Path.cwd", return_value=Path(__file__).parent)
     assert not cli.main(input)
@@ -87,7 +92,8 @@ def test_main_cwd_exist_only(input, expected, capsys, mocker):
     """Connection string returned from `./.usql_conf` if exists."""
     mocker.patch("usql_conf.cli.Path.home", return_value=Path(__file__).parent)
     mocker.patch(
-        "usql_conf.cli.Path.cwd", return_value=Path(__file__).parent / "mock_cwd"
+        "usql_conf.cli.Path.cwd",
+        return_value=Path(__file__).parent / "mock_cwd",
     )
     assert not cli.main(input)
 
